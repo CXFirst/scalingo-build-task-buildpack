@@ -1,0 +1,23 @@
+#!/bin/bash
+
+BUILD_DIR=${1:-}
+
+# Check if cmd bundle exists
+if which bundle > /dev/null; then
+    # Task to search for
+    task_to_find="build:build"
+
+    # Running the rake command and redirecting output to a temporary file
+    available_tasks=$(mktemp)
+    bundle exec rake -T -a > $available_tasks
+
+    # Searching in the temporary file (space is needed)
+    if grep -q "$task_to_find " $available_tasks; then
+        rm $available_tasks
+        echo "Build task detected" && exit 0
+    fi
+
+    rm $available_tasks
+fi
+
+echo "No build task detected" && exit 1
