@@ -5,7 +5,6 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
 echo "-----> Run build taks"
-echo "val=${BUILD_DIR} | ${CACHE_DIR} | ${ENV_DIR}"
 
 cd $BUILD_DIR
 bundle exec rake 'build:build' 
