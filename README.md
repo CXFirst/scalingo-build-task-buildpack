@@ -13,13 +13,13 @@ namespace :build do
   desc "Build hook"
   task :build do |_t, args|
     # your logic here
-    # do not forget that during build time the root project path will not be `/app/app` but something like `/build/<uuid>/app/app/...`
+    # do not forget that during build time the root project path will not be `/app/app` but something like `/build/<uuid>/app/...`
     # thus you need to use `Rails.root.join('app', ...)`
   end
 end
 ```
 
-Add a `.buildpacks` at the root of your project with all the needed [buildpacks](https://doc.scalingo.com/platform/deployment/buildpacks/intro)
+Add a `.buildpacks` at the root of your project with all the needed [buildpacks](https://doc.scalingo.com/platform/deployment/buildpacks/intro) and the current one
 
 For example :
 ```
@@ -28,7 +28,7 @@ For example :
 https://github.com/Scalingo/apt-buildpack.git
 https://github.com/Scalingo/nodejs-buildpack.git
 https://github.com/Scalingo/ruby-buildpack.git
-https://github.com/CXFirst/scalingo-build-task-buildpack
+https://github.com/CXFirst/scalingo-build-task-buildpack.git
 ```
 
 Finally deploy on Scalingo
